@@ -1,0 +1,35 @@
+Data pre processing
+
+
+Tuvimos tres etapas de seleccion de datos. 
+
+1. Seleccionamos los datos de acuerdo al tema de interes:
+
+Anomalias en la temperatura
+Emisiones de co2
+Poblacion
+Total de personas afectadas por desastres naturales
+Total de da;os economicos
+Total de da;os economicos como %del PIB.
+
+2. Seleccionamos los datos por un periodo de tiempo.
+
+3. Seleccionamos los datos por pa[is. Esta ultima etapa se baso en un modelo de clasificacion (Kmeans), mismos que coinciden con los paises oficiales publicados por.... 
+
+Previo a establecer un modelo se decidio hacer un analisis estadistico preliminar de las variables seed y target: temperatura y costos economicos como % PIB
+
+Analisis por pais: 
+
+Analisis estadistico de las variables seed y target.
+
+A partir de la base general en la que tenemos toda la informacion. Se selecciono el pais de analisis, el periodo de tiempo para dicho analisis y por ultimo las variables de interes.
+
+Posteriormente se hicieron pruebas de correlacion para establecer el modelo base.
+Finalmente se hicieron modelos de regresion lineal y robustos y se compararon sus MAE para elegir el mas adecuado de acuerdo a la informacion disponible.
+Tambien se hizo un modelo Forest Random.
+Se seleciono el mas adecuado estadisticamente (se hicieron pruebas de significancia estadistica (t-student) para cada variable, prueba F para el modelo y la prueba R) 
+Se hicieron train y test para evaluar el modelo. (se uso la metodologia vista en el curso train_test_split con los niveles dadios default)
+Se obtuvieron las predicciones.
+
+Por el momento nos hemos enfrentado al problema de trabajar con datos de tipo discreto pero con informacion significativa, por lo que los hemos tratado como datos con fuertes outliers.
+Por esa razon elegimos usar modelos robustos (Huber, RANSAC y Theil Sen) que consideran datos con outliers y un modelo de random forest para ver que modelo lee mejor la informacion que tenemos.
